@@ -7,37 +7,43 @@
   <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
-  <section class="section has-text-centered">
-    <h1 class="title is-centered"><%= htmlWebpackPlugin.options.title %></h1>
-    <h2 class="subtitle">Courtesy of <a href="http://www.icndb.com/">ICNDb.com</a></h2>
-  </section>
+  <div class="container">
+    <section class="section has-text-centered">
+      <h1 class="title is-centered"><%= htmlWebpackPlugin.options.title %></h1>
+      <h2 class="subtitle">Courtesy of <a href="http://www.icndb.com/">ICNDb.com</a></h2>
+    </section>
 
-  <section class="section has-text-centered">
-    <img class="image-chuck" src="/images/chuck_norris.png" alt="Chuck Norris">
-  </section>
+    <section class="section has-text-centered">
+      <img class="image-chuck" src="/images/chuck_norris.png" alt="Chuck Norris">
+    </section>
 
-  <section class="section">
-    <div class="tabs">
-      <ul>
-        <li class="is-active"><a>Chuck Feed</a></li>
-        <li><a>My Favorites</a></li>
-      </ul>
-    </div>
-  </section>
+    <section class="section">
+      <div class="tabs">
+        <ul>
+          <li class="is-active"><a>Chuck Feed</a></li>
+          <li><a>My Favorites</a></li>
+        </ul>
+      </div>
+    </section>
 
-  <section class="section has-text-centered">
-    <p>Click the button below to roundhouse kick some Chuck Norris jokes...</p>
-  </section>
+    <section class="section has-text-centered">
+      <p>Click the button below to roundhouse kick some Chuck Norris jokes...</p>
+    </section>
 
-  <section class="section has-text-centered">
-    <button class="button is-primary">Roundhouse Kick</button>
-  </section>
+    <section class="section has-text-centered">
+      <button id="load_button" class="button is-primary">Roundhouse Kick</button>
+    </section>
 
-  <section class="section">
-    <label class="checkbox joke">
-      <input type="checkbox">
-      <span>Chuck Norris never has to build his program to machine code. Machines have learnt to interpret Chuck Norris code.</span>
-    </label>
-  </section>
+    <section class="section" id="joke_section"></section>
+
+    <template id="joke_template">
+      <div class="joke">
+        <label class="checkbox">
+          <input type="checkbox">
+          <span>{joke}</span>
+        </label>
+      </div>
+    </template>
+  </div>
 </body>
 </html>
