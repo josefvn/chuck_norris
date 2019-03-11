@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 path = require('path');
 
 module.exports = {
@@ -26,6 +27,9 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
+    new CopyWebpackPlugin([
+      { from: 'assets' }
+    ]),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       title: 'Chuck Norris Jokes',
