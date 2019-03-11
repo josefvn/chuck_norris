@@ -5,6 +5,16 @@ $section-padding: 1rem 1rem;
 @import "~bulma/bulma";
 
 .image-chuck {
-  max-width: 50%;
+  max-width: 100px;
   opacity: 0.55;
+}
+
+.joke {
+  border-bottom: 1px dashed lightgray;
+  display: flex;
+  padding: 1rem 0;
+
+  input[type=checkbox] {
+    margin: 0.4rem 1rem;
+  }
 }
