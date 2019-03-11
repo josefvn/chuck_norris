@@ -1,0 +1,15 @@
+{
+  "name": "chuck_norris",
+  "version": "0.0.1",
+  "description": "An app filled with Chuck Norris jokes.",
+  "main": "index.js",
+  "scripts": {
+    "serve": "live-server ./public",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Josef van Niekerk <josef.van.niekerk@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  }
+}
