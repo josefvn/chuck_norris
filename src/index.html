@@ -8,38 +8,45 @@
 </head>
 <body>
   <div class="container">
-    <section class="section has-text-centered">
+    <header class="section has-text-centered">
       <h1 class="title is-centered"><%= htmlWebpackPlugin.options.title %></h1>
-      <h2 class="subtitle">Courtesy of <a href="http://www.icndb.com/">ICNDb.com</a></h2>
-    </section>
+      <p class="subtitle">Courtesy of <a href="http://www.icndb.com/">ICNDb.com</a></p>
+    </header>
 
     <section class="section has-text-centered">
       <img class="image-chuck" src="/images/chuck_norris.png" alt="Chuck Norris">
     </section>
 
     <section class="section">
-      <div class="tabs">
+      <div class="tabs" id="chuck-tabs">
         <ul>
-          <li class="is-active"><a>Chuck Feed</a></li>
-          <li><a>My Favorites</a></li>
+          <li class="tab is-active" data-tab-content="chuck-feed">
+            <a>Chuck Feed</a>
+          </li>
+          <li class="tab" data-tab-content="favorite-feed">
+            <a>My Favorites</a>
+          </li>
         </ul>
       </div>
     </section>
 
-    <section class="section has-text-centered">
-      <p>Click the button below to roundhouse kick some Chuck Norris jokes...</p>
-    </section>
-
-    <section class="section has-text-centered">
-      <button id="load_button" class="button is-primary">
+    <section class="section" id="chuck-feed">
+      <div class="notification is-info">
+        <button class="delete"></button>
+        <span>Click the button below to roundhouse kick some Chuck Norris jokes</span>
+      </div>
+      <button id="load_button" class="button is-primary is-medium">
         <span class="icon is-small">
             <i class="icon-refresh"></i>
           </span>
         <span>Roundhouse Kick</span>
       </button>
+      <section class="section" id="joke_section"></section>
     </section>
 
-    <section class="section" id="joke_section"></section>
+    <section class="section is-hidden" id="favorite-feed">
+      <h2>My Favorite Feed</h2>
+    </section>
 
     <template id="joke_template">
       <div class="joke">

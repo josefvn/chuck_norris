@@ -2,6 +2,7 @@ import('../scss/app.scss');
 import config from './config';
 import { fetchRandomJokes } from './jokeService';
 import { JokeView } from './jokeView';
+import { Tabs } from "./tabs";
 
 /**
  * Currently fetched jokes.
@@ -13,6 +14,11 @@ let jokes = [];
  * @type {JokeView}
  */
 let jokeView;
+
+/**
+ * @type {Tabs}
+ */
+let tabs;
 
 /**
  * HTML Element references
@@ -45,6 +51,8 @@ function initApp() {
     document.querySelector('#joke_template'),
     document.querySelector('#joke_section')
   );
+
+  tabs = new Tabs(document.querySelector('#chuck-tabs'));
 }
 
 initApp();
