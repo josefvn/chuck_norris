@@ -19,7 +19,13 @@ module.exports = {
           { loader: 'css-loader' },
           { loader: 'sass-loader' }
         ]
-      }
+      },
+      {
+        test: /\.(svg|ttf|woff)$/,
+        use: [
+          { loader: 'file-loader' },
+        ],
+      },
     ]
   },
   output: {
