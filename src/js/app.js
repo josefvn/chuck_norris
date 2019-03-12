@@ -1,8 +1,14 @@
 import('../scss/app.scss');
 import config from './config';
+import { Favorites } from "./favorites";
 import { fetchRandomJokes } from './jokeService';
-import { JokeView } from './jokeView';
+import { JOKE_SELECT_CHANGE, JokeView } from './jokeView';
 import { Tabs } from "./tabs";
+
+/**
+ * @type {Favorites}
+ */
+let favorites;
 
 /**
  * Currently fetched jokes.
@@ -52,7 +58,19 @@ function initApp() {
     document.querySelector('#joke_section')
   );
 
+  /**
+   * Add items to favorites list.
+   */
+  addEventListener(
+    JOKE_SELECT_CHANGE,
+    ({ detail }) => favorites[detail.checked ? 'add' : 'remove'](detail.value, detail.text)
+  );
+
+  // Initialize tabs
   tabs = new Tabs(document.querySelector('#chuck-tabs'));
+
+  // Initialize Favorites
+  favorites = new Favorites();
 }
 
 initApp();
