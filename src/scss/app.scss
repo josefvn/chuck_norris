@@ -16,9 +16,25 @@ header.section {
   }
 }
 
-.image-chuck {
-  max-width: 100px;
-  opacity: 0.55;
+.action {
+  .image-chuck {
+    width: 100px;
+    opacity: 0.55;
+  }
+
+  &.columns {
+    align-items: center;
+    display: flex;
+    margin: 0;
+  }
+}
+
+.section .notification {
+  margin: 0;
+}
+
+.section#chuck-feed {
+  padding-top: 0;
 }
 
 .joke {

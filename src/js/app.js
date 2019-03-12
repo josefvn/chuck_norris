@@ -4,6 +4,7 @@ import { Favorites } from "./favorites";
 import { fetchRandomJokes } from './jokeService';
 import { JOKE_SELECT_CHANGE, JokeView } from './jokeView';
 import { Tabs } from "./tabs";
+import { initializeNotifications } from "./notification";
 
 /**
  * @type {Favorites}
@@ -71,6 +72,9 @@ function initApp() {
 
   // Initialize Favorites
   favorites = new Favorites();
+
+  // Initialize notification
+  initializeNotifications();
 }
 
 initApp();

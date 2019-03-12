@@ -13,8 +13,18 @@
       <p class="subtitle">Courtesy of <a href="http://www.icndb.com/">ICNDb.com</a></p>
     </header>
 
-    <section class="section has-text-centered">
-      <img class="image-chuck" src="/images/chuck_norris.png" alt="Chuck Norris">
+    <section class="action columns is-mobile  section has-text-centered">
+      <div class="column is-half-mobile">
+        <img class="image-chuck" src="/images/chuck_norris.png" alt="Chuck Norris">
+      </div>
+      <div class="column is-half-mobile">
+        <button id="load_button" class="button is-primary is-medium">
+          <span class="icon is-small">
+              <i class="icon-refresh"></i>
+            </span>
+          <span>Refresh</span>
+        </button>
+      </div>
     </section>
 
     <section class="section">
@@ -33,15 +43,9 @@
     <section class="section" id="chuck-feed">
       <div class="notification is-info">
         <button class="delete"></button>
-        <span>Click the button below to roundhouse kick some Chuck Norris jokes</span>
+        <span>Click <strong>Refresh</strong> to roundhouse kick some Chuck Norris jokes!</span>
       </div>
-      <button id="load_button" class="button is-primary is-medium">
-        <span class="icon is-small">
-            <i class="icon-refresh"></i>
-          </span>
-        <span>Roundhouse Kick</span>
-      </button>
-      <section class="section" id="joke_section"></section>
+      <section id="joke_section"></section>
     </section>
 
     <section class="section is-hidden" id="favorite-feed">
