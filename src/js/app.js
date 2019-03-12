@@ -1,35 +1,50 @@
 import('../scss/app.scss');
 import config from './config';
+import { fetchRandomJokes } from './jokeService';
+import { JokeView } from './jokeView';
 
-let appData = [];
-let jokeTemplate, jokeSection, loadButton;
+/**
+ * Currently fetched jokes.
+ * @type {Array}
+ */
+let jokes = [];
 
-async function fetchRandomJokes() {
-  let result;
+/**
+ * @type {JokeView}
+ */
+let jokeView;
+
+/**
+ * HTML Element references
+ * @type {HTMLElement}
+ */
+let loadButton;
+
+/**
+ * Load button click handler.
+ */
+async function handleLoadButtonClick() {
   loadButton.classList.add('is-loading');
-  try {
-    result = await fetch(`${config.api.endpoint}/jokes/random/${config.api.limit}`)
-  } catch (err) {
-    console.error('Attempt to load jokes failed!');
-  }
-  appData = (await result.json()).value;
-  updateDisplay(appData);
-}
-
-function updateDisplay(appData) {
-  jokeSection.innerHTML = '';
-  appData.forEach(data => {
-    jokeSection.innerHTML += jokeTemplate.innerHTML.replace('{joke}', data.joke);
-  });
+  jokes = await fetchRandomJokes(config.api.limit);
+  jokeView.update(jokes);
   loadButton.classList.remove('is-loading');
 }
 
+/**
+ * Initialize the application
+ */
 function initApp() {
-  jokeTemplate = document.querySelector('#joke_template');
-  jokeSection = document.querySelector('#joke_section');
+  // Cache HTML elements
   loadButton = document.querySelector('#load_button');
 
-  loadButton.addEventListener('click', fetchRandomJokes);
+  // Add event listeners
+  loadButton.addEventListener('click', handleLoadButtonClick);
+
+  // Initialize the joke view/list
+  jokeView = new JokeView(
+    document.querySelector('#joke_template'),
+    document.querySelector('#joke_section')
+  );
 }
 
 initApp();
