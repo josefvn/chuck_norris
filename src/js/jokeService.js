@@ -10,7 +10,7 @@ export async function fetchRandomJokes(limit) {
   try {
     result = await fetch(`${config.api.endpoint}/jokes/random/${limit}`)
   } catch (err) {
-    console.error('Attempt to load jokes failed!');
+    alert('Attempt to load jokes failed!');
   }
   return (await result.json()).value;
 }

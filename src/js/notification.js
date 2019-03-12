@@ -4,3 +4,8 @@ export const initializeNotifications = () => {
     button.addEventListener('click', () => button.parentElement.remove());
   })
 };
+
+export const clearNotifications = () => {
+  const notifications = [...document.querySelectorAll('.notification')];
+  notifications.forEach(item => item.remove());
+};

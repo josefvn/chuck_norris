@@ -4,7 +4,7 @@ import { Favorites } from "./favorites";
 import { fetchRandomJokes } from './jokeService';
 import { JOKE_SELECT_CHANGE, JokeView } from './jokeView';
 import { Tabs } from "./tabs";
-import { initializeNotifications } from "./notification";
+import { initializeNotifications, clearNotifications } from "./notification";
 
 /**
  * @type {Favorites}
@@ -41,6 +41,7 @@ async function handleLoadButtonClick() {
   jokes = await fetchRandomJokes(config.api.limit);
   jokeView.update(jokes);
   loadButton.classList.remove('is-loading');
+  clearNotifications();
 }
 
 /**
