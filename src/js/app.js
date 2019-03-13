@@ -7,14 +7,19 @@ import { Tabs } from "./tabs";
 import { clearNotifications, initialiseNotifications, makeNotification } from "./notification";
 
 /**
+ * @type {Favorites} Favorites data store
+ */
+let favorites;
+
+/**
  * @type {HTMLElement} Counter indicating the number of favorites
  */
 let favoritesCounter;
 
 /**
- * @type {Favorites} Favorites data store
+ * @type {JokeView} Favorites view
  */
-let favorites;
+let favoritesView;
 
 /**
  * @type {Array} Currently fetched jokes
@@ -27,19 +32,24 @@ let jokes = [];
 let jokeView;
 
 /**
- * @type {JokeView} Favorites view
+ * @type {HTMLInputElement}
  */
-let favoritesView;
+let randomizeCheckbox;
 
 /**
- * @type {Tabs} Tabs component
+ * @type {number} Timer interval reference
  */
-let tabs;
+let randomizeInterval = -1;
 
 /**
  * @type {HTMLElement} Refresh button
  */
 let refreshButton;
+
+/**
+ * @type {Tabs} Tabs component
+ */
+let tabs;
 
 /**
  * Updates favorites view as favorites are added/removed
@@ -73,6 +83,16 @@ function updateChuckFeedTicks() {
 }
 
 /**
+ * Turns randomization of favorites on/off
+ */
+function handleChangeRandomizeFavorites() {
+  if (randomizeInterval > -1) clearInterval(randomizeInterval);
+  if (randomizeCheckbox.checked) {
+    randomizeInterval = setInterval(handleRandomizeInterval, config.randomiseInterval);
+  }
+}
+
+/**
  * Load button click handler.
  */
 async function handleLoadButtonClick() {
@@ -82,6 +102,14 @@ async function handleLoadButtonClick() {
   updateChuckFeedTicks();
   refreshButton.classList.remove('is-loading');
   clearNotifications();
+}
+
+/**
+ * Fired when it's time to fetch a random joke
+ */
+async function handleRandomizeInterval() {
+  const { id, joke } = (await fetchRandomJokes(1))[0];
+  favorites.add(id, joke);
 }
 
 /**
@@ -97,6 +125,8 @@ function initialiseListeners() {
 
   addEventListener(FAVORITES_UPDATED, updateFavoritesFeed);
   addEventListener(FAVORITES_UPDATED, updateChuckFeedTicks);
+
+  randomizeCheckbox.addEventListener('change', handleChangeRandomizeFavorites);
 }
 
 /**
@@ -104,6 +134,7 @@ function initialiseListeners() {
  */
 function initialiseApplication() {
   favoritesCounter = document.querySelector('.favorites-counter');
+  randomizeCheckbox = document.querySelector('#randomize_favorites');
   refreshButton = document.querySelector('#load_button');
 
   jokeView = new JokeView(

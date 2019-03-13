@@ -10,4 +10,9 @@ export default {
      */
     limit: 10,
   },
+
+  /**
+   * @type {number} Number of milliseconds between favorite randomization
+   */
+  randomiseInterval: 5000,
 }
