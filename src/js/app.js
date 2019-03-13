@@ -5,6 +5,7 @@ import { fetchRandomJokes } from './jokeService';
 import { JOKE_SELECT_CHANGE, JokeView } from './jokeView';
 import { Tabs } from "./tabs";
 import { clearNotifications, initialiseNotifications, makeNotification } from "./notification";
+import { Session } from './session';
 
 /**
  * @type {Favorites} Favorites data store
@@ -45,6 +46,11 @@ let randomizeInterval = -1;
  * @type {HTMLElement} Refresh button
  */
 let refreshButton;
+
+/**
+ * @type {Session} User session management
+ */
+let session;
 
 /**
  * @type {Tabs} Tabs component
@@ -153,6 +159,7 @@ function initialiseApplication() {
 
   tabs = new Tabs(document.querySelector('#chuck-tabs'));
   favorites = new Favorites();
+  session = new Session();
 
   initialiseListeners();
   initialiseNotifications();
