@@ -68,6 +68,9 @@ function updateFavoritesFeed() {
       item => ({ id: item.id, joke: item.text, checked: true })
     )
   );
+
+  randomizeCheckbox.parentElement.disabled = randomizeCheckbox.disabled = favorites.all().length >= 10;
+
 }
 
 /**
@@ -106,6 +109,7 @@ async function handleLoadButtonClick() {
 
 /**
  * Fired when it's time to fetch a random joke
+ * TODO: Don't fetch if previous joke request is still 'pending'
  */
 async function handleRandomizeInterval() {
   const { id, joke } = (await fetchRandomJokes(1))[0];
