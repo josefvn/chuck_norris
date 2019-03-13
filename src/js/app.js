@@ -7,6 +7,11 @@ import { Tabs } from "./tabs";
 import { clearNotifications, initialiseNotifications, makeNotification } from "./notification";
 
 /**
+ * @type {HTMLElement} Counter indicating the number of favorites
+ */
+let favoritesCounter;
+
+/**
  * @type {Favorites} Favorites data store
  */
 let favorites;
@@ -40,6 +45,8 @@ let refreshButton;
  * Updates favorites view as favorites are added/removed
  */
 function updateFavoritesFeed() {
+  favoritesCounter.innerHTML = favorites.all().length;
+
   if (favorites.all().length === 0) {
     const favoriteSection = document.querySelector('#favorite_section');
     favoriteSection.innerHTML = makeNotification('You do not currently have any favorites...');
@@ -96,6 +103,7 @@ function initialiseListeners() {
  * Initialise the application
  */
 function initialiseApplication() {
+  favoritesCounter = document.querySelector('.favorites-counter');
   refreshButton = document.querySelector('#load_button');
 
   jokeView = new JokeView(

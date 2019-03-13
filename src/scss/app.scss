@@ -37,6 +37,16 @@ header.section {
   padding-top: 0;
 }
 
+.favorites-counter {
+  background: $primary;
+  border-radius: 3px;
+  color: white;
+  font-size: 0.9rem;
+  line-height: 1rem;
+  padding: 0.25rem 0.6rem;
+  margin-left: 0.5rem;
+}
+
 .joke {
   label {
     border-bottom: 1px dashed lightgray;
