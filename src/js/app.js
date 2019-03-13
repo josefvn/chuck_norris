@@ -75,8 +75,13 @@ function updateFavoritesFeed() {
     )
   );
 
-  randomizeCheckbox.parentElement.disabled = randomizeCheckbox.disabled = favorites.all().length >= 10;
-
+  const maxFavoritesReached = favorites.all().length >= 10;
+  if (maxFavoritesReached) {
+    randomizeCheckbox.parentElement.setAttribute('disabled', true);
+  } else {
+    randomizeCheckbox.parentElement.removeAttribute('disabled');
+  }
+  randomizeCheckbox.disabled = maxFavoritesReached;
 }
 
 /**
@@ -164,6 +169,9 @@ function initialiseApplication() {
   initialiseListeners();
   initialiseNotifications();
   updateFavoritesFeed();
+
+  // Cheating a bit to reduce FOUC.
+  setTimeout(() => document.body.style.display = 'block', 100);
 }
 
 initialiseApplication();
