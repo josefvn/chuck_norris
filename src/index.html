@@ -33,7 +33,7 @@
           <li class="tab is-active" data-tab-content="chuck-feed">
             <a>Chuck Feed</a>
           </li>
-          <li class="tab" data-tab-content="favorite-feed">
+          <li class="tab" data-tab-content="favorite_feed">
             <a>My Favorites</a>
           </li>
         </ul>
@@ -48,14 +48,14 @@
       <section id="joke_section"></section>
     </section>
 
-    <section class="section is-hidden" id="favorite-feed">
-      <h2>My Favorite Feed</h2>
+    <section class="section is-hidden" id="favorite_feed">
+      <section id="favorite_section"></section>
     </section>
 
     <template id="joke_template">
       <div class="joke">
         <label class="checkbox">
-          <input type="checkbox" value="{id}" data-text="{joke}">
+          <input type="checkbox" value="{id}" data-text="{joke}" {checked}>
           <span>{joke}</span>
         </label>
       </div>

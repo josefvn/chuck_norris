@@ -1,4 +1,5 @@
-const FAVORITES = 'favorites';
+const FAVORITES_STORAGE_KEY = 'favorites';
+export const FAVORITES_UPDATED = 'favorites-updated';
 
 /**
  * Class for maintaining favorites.
@@ -9,7 +10,14 @@ export class Favorites {
    */
   constructor(limit = 10) {
     this.limit = limit;
-    this.favorites = JSON.parse(localStorage.getItem(FAVORITES)) || [];
+    this.favorites = JSON.parse(localStorage.getItem(FAVORITES_STORAGE_KEY)) || [];
+  }
+
+  /**
+   * @returns {[]}
+   */
+  all() {
+    return this.favorites;
   }
 
   /**
@@ -30,6 +38,7 @@ export class Favorites {
     }
 
     this.store();
+    dispatchEvent(new Event(FAVORITES_UPDATED));
   }
 
   /**
@@ -49,12 +58,13 @@ export class Favorites {
     const index = this.favorites.findIndex(item => item.id === parseInt(id, 10));
     this.favorites.splice(index, 1);
     this.store();
+    dispatchEvent(new Event(FAVORITES_UPDATED));
   }
 
   /**
    * Commit the favorites to localStorage
    */
   store() {
-    localStorage.setItem('favorites', JSON.stringify(this.favorites));
+    localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(this.favorites));
   }
 }

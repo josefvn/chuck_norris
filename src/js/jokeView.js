@@ -17,11 +17,14 @@ export class JokeView {
   /**
    * @param {HTMLElement} target
    * @param {string} text
+   * @param {string} id
+   * @param {boolean} checked
    */
-  appendJoke(target, text, id) {
+  appendJoke(target, text, id, checked = false) {
     target.innerHTML += this.template.innerHTML
       .replace(/{joke}/g, text)
-      .replace('{id}', id);
+      .replace('{id}', id)
+      .replace(/{checked}/g, checked ? 'checked' : '');
   }
 
   /**
@@ -37,7 +40,7 @@ export class JokeView {
    */
   update(jokesArray) {
     this.clearJokes();
-    jokesArray.forEach(data => this.appendJoke(this.target, data.joke, data.id));
+    jokesArray.forEach(data => this.appendJoke(this.target, data.joke, data.id, data.checked || false));
   }
 
   /**
