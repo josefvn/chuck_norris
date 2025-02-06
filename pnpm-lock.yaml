@@ -6,7 +6,9 @@ settings:
 
 importers:
 
-  .:
+  .: {}
+
+  old-app:
     dependencies:
       bulma:
         specifier: ^0.7.4

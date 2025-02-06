@@ -7,9 +7,10 @@ A delightful application full of Chuck Norris jokes.
 To setup and host, checkout this repository and in your favorite CLI terminal, execute the following
 ```
 pnpm install
-pnpm serve
+pnpm --filter chuck@old-app build
+pnpm --filter chuck@old-app serve
 ```
 Alternatively, you can use webpack-dev-server for development purposes. To run WDS server, run the following in your CLI terminal:
 ```
-pnpm watch
+pnpm --filter chuck@old-app watch
 ```
