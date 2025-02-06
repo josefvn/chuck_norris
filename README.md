@@ -6,10 +6,10 @@ A delightful application full of Chuck Norris jokes.
 ## Setup
 To setup and host, checkout this repository and in your favorite CLI terminal, execute the following
 ```
-yarn install
-yarn serve
+pnpm install
+pnpm serve
 ```
 Alternatively, you can use webpack-dev-server for development purposes. To run WDS server, run the following in your CLI terminal:
 ```
-yarn watch
+pnpm watch
 ```
