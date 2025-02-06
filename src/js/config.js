@@ -3,12 +3,12 @@ export default {
     /**
      * @type {string} ICNDb APi endpoint
      */
-    endpoint: 'https://api.icndb.com',
+    endpoint: 'https://api.chucknorris.io',
 
     /**
      * @type {number} Number of jokes to load
      */
-    limit: 10,
+    limit: 5,
   },
 
   /**

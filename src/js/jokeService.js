@@ -6,11 +6,17 @@ import config from './config';
  * @returns {Promise<*>}
  */
 export async function fetchRandomJokes(limit) {
-  let result;
+  const fetchPromises = [];
+
+  for (let i = 0; i < limit; i++) {
+    fetchPromises.push(fetch(`${config.api.endpoint}/jokes/random`).then(result => result.json()));
+  }
+
   try {
-    result = await fetch(`${config.api.endpoint}/jokes/random/${limit}`)
+    const results = await Promise.all(fetchPromises);
+    return results.map(data => ({ id: data.id, joke: data.value }));
   } catch (err) {
     alert('Attempt to load jokes failed!');
+    return [];
   }
-  return (await result.json()).value;
 }

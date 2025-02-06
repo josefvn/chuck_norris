@@ -40,7 +40,9 @@ export class JokeView {
    */
   update(jokesArray) {
     this.clearJokes();
-    jokesArray.forEach(data => this.appendJoke(this.target, data.joke, data.id, data.checked || false));
+    jokesArray.forEach(data => {
+      this.appendJoke(this.target, data.joke, data.id, data.checked || false);
+    });
   }
 
   /**

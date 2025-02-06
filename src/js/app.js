@@ -1,11 +1,11 @@
 import('../scss/app.scss');
 import config from './config';
-import { Favorites, FAVORITES_UPDATED } from "./favorites";
-import { fetchRandomJokes } from './jokeService';
-import { JOKE_SELECT_CHANGE, JokeView } from './jokeView';
-import { Tabs } from "./tabs";
-import { clearNotifications, initialiseNotifications, makeNotification } from "./notification";
-import { Session } from './session';
+import {Favorites, FAVORITES_UPDATED} from "./favorites";
+import {fetchRandomJokes} from './jokeService';
+import {JOKE_SELECT_CHANGE, JokeView} from './jokeView';
+import {Tabs} from "./tabs";
+import {clearNotifications, initialiseNotifications, makeNotification} from "./notification";
+import {Session} from './session';
 
 /**
  * @type {Favorites} Favorites data store
@@ -71,7 +71,7 @@ function updateFavoritesFeed() {
 
   favoritesView.update(
     favorites.all().map(
-      item => ({ id: item.id, joke: item.text, checked: true })
+      item => ({id: item.id, joke: item.text, checked: true})
     )
   );
 
@@ -123,7 +123,7 @@ async function handleLoadButtonClick() {
  * TODO: Don't fetch if previous joke request is still 'pending'
  */
 async function handleRandomizeInterval() {
-  const { id, joke } = (await fetchRandomJokes(1))[0];
+  const {id, joke} = (await fetchRandomJokes(1))[0];
   favorites.add(id, joke);
 }
 
@@ -135,7 +135,7 @@ function initialiseListeners() {
 
   addEventListener(
     JOKE_SELECT_CHANGE,
-    ({ detail }) => favorites[detail.checked ? 'add' : 'remove'](detail.value, detail.text)
+    ({detail}) => favorites[detail.checked ? 'add' : 'remove'](detail.value, detail.text)
   );
 
   addEventListener(FAVORITES_UPDATED, updateFavoritesFeed);
