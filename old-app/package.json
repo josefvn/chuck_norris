@@ -1,19 +1,9 @@
 {
-  "name": "chuck@old-app",
-  "version": "0.0.1",
-  "description": "An app filled with Chuck Norris jokes.",
-  "main": "index.js",
-  "scripts": {
-    "build": "webpack --config webpack.config.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "live-server --no-browser --port=3000 ./dist",
-    "watch": "webpack-dev-server"
-  },
   "author": "Josef van Niekerk <josef.van.niekerk@gmail.com>",
-  "license": "MIT",
   "dependencies": {
     "bulma": "^0.7.4"
   },
+  "description": "An app filled with Chuck Norris jokes.",
   "devDependencies": {
     "copy-webpack-plugin": "^5.0.1",
     "css-loader": "^2.1.1",
@@ -26,5 +16,15 @@
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.1"
-  }
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "name": "chuck@old-app",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "live-server --no-browser --port=3000 ./dist",
+    "watch": "webpack-dev-server"
+  },
+  "version": "0.0.1"
 }
