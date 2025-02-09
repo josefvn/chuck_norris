@@ -2,6 +2,7 @@ import './app.css'
 import { useQuery } from '@tanstack/react-query'
 import { getRandomJoke } from './api'
 import { Button } from './ui/button'
+import { Loader } from './ui/loader'
 import { Typography } from './ui/typography'
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
       </div>
 
       <div className="h-16 mx-16 text-center">
-        {isFetching && <Typography>Loading...</Typography>}
+        {isFetching && <Loader/>}
 
         {!isFetching && data &&
           <Typography>{data.value}</Typography>

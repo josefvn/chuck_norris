@@ -1,0 +1,28 @@
+.loader {
+  animation: l24 1s infinite linear;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid #0000;
+  border-right-color: color-mix(in oklab, var(--color-teal-500) 50%, transparent);
+  position: relative;
+  width: 50px;
+}
+
+.loader:before,
+.loader:after {
+  animation-duration: 2s;
+  animation: inherit;
+  border-radius: 50%;
+  border: inherit;
+  content: "";
+  inset: -8px;
+  position: absolute;
+}
+
+.loader:after {
+  animation-duration: 4s;
+}
+
+@keyframes l24 {
+  100% {transform: rotate(1turn)}
+}
