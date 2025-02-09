@@ -18,19 +18,25 @@ function App() {
     <main className='flex flex-col gap-4 h-dvh items-center justify-center'>
       <img
         alt='Chuck Norris'
-        className='m-4 opacity-25'
+        className='-mt-16 opacity-25'
         src='/chuck_400px.png'
         height={200}
         width={200}
       />
       <Typography variant='h1'>Chuck Norris Jokes</Typography>
-      <Button onClick={handleFetchJokesClick}>Fetch me some Jokes!</Button>
+      <hr className="border-t border-gray-300 w-md"/>
 
-      {isFetching && <Typography>Loading...</Typography>}
+      <div className="my-8">
+        <Button onClick={handleFetchJokesClick}>Fetch me a joke!</Button>
+      </div>
 
-      {!isFetching && data &&
-        <Typography>{data}</Typography>
-      }
+      <div className="h-16 mx-16 text-center">
+        {isFetching && <Typography>Loading...</Typography>}
+
+        {!isFetching && data &&
+          <Typography>{data}</Typography>
+        }
+      </div>
     </main>
   )
 }
