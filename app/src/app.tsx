@@ -34,7 +34,7 @@ function App() {
         {isFetching && <Typography>Loading...</Typography>}
 
         {!isFetching && data &&
-          <Typography>{data}</Typography>
+          <Typography>{data.value}</Typography>
         }
       </div>
     </main>
